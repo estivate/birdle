@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
   createSquares();
   createKeyboard();
   initHelpModal();
-  //initStatsModal();
+  initShareModal();
 });
 
 function checkNewLetterGuess(letter: string) {
@@ -208,44 +208,52 @@ function initHelpModal() {
   });
 }
 
-// function updateStatsModal() {
-//   const currentStreak = window.localStorage.getItem("currentStreak");
-//   const totalWins = window.localStorage.getItem("totalWins");
-//   const totalGames = window.localStorage.getItem("totalGames");
+function updateShareModal() {
+  // put results
+  const resultP = document.getElementById("share-results")!;
+  // share score
+  let shareData = {
+    title: 'Birdle',
+    text: 'This is the string to share!',
+    url: 'https://birdle.pages.dev',
+  }
+  navigator.share(shareData).then(() => {
+    console.log("shared sucessfully");
+    resultP.textContent = 'Share Complete!';
+  })
+}
 
-//   document.getElementById("total-played").textContent = totalGames;
-//   document.getElementById("total-wins").textContent = totalWins;
-//   document.getElementById("current-streak").textContent = currentStreak;
+function initShareModal() {
+  const modal = document.getElementById("share-modal")!;
 
-//   const winPct = Math.round((totalWins / totalGames) * 100) || 0;
-//   document.getElementById("win-pct").textContent = winPct;
-// }
+  // Get the button that opens the modal
+  const btn = document.getElementById("share")!;
 
-// function initStatsModal() {
-//   const modal = document.getElementById("stats-modal");
+  // Get the <span> element that closes the modal
+  const span = document.getElementById("close-share")!;
 
-//   // Get the button that opens the modal
-//   const btn = document.getElementById("stats");
+  // get button to share score
+  const share_button = document.getElementById("share-button")!;
 
-//   // Get the <span> element that closes the modal
-//   const span = document.getElementById("close-stats");
+  share_button.addEventListener("click", function () {
+    updateShareModal();
+  });
 
-//   // When the user clicks on the button, open the modal
-//   btn.addEventListener("click", function () {
-//     updateStatsModal();
-//     modal.style.display = "block";
-//   });
+  // When the user clicks on the button, open the modal
+  btn.addEventListener("click", function () {
+    // updateShareModal();
+    modal.style.display = "block";
+  });
 
-//   // When the user clicks on <span> (x), close the modal
-//   span.addEventListener("click", function () {
-//     modal.style.display = "none";
-//   });
+  // When the user clicks on <span> (x), close the modal
+  span.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
 
-//   // When the user clicks anywhere outside of the modal, close it
-//   window.addEventListener("click", function (event) {
-//     if (event.target == modal) {
-//       modal.style.display = "none";
-//     }
-//   });
-// }
-// });
+  // When the user clicks anywhere outside of the modal, close it
+  window.addEventListener("click", function (event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  });
+}

@@ -6,7 +6,7 @@
     <link rel="apple-touch-icon" href="favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
-      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      src="https://use.fontawesome.com/releases/v6.0.0/js/all.js"
       data-auto-replace-svg="nest"
     ></script>
     <title>Birdle</title>
@@ -17,7 +17,7 @@
         <header>
           <i class="far fa-question-circle" id="help"></i>
           <h1 class="title">Birdle</h1>
-          <i class="fas fa-chart-bar" id="stats"></i>
+          <i class="fa-solid fa-share-nodes" id="share"></i>
         </header>
 
         <div id="board-container">
@@ -95,22 +95,17 @@
       </div>
     </div>
 
-    <div id="stats-modal" class="modal">
+    <div id="share-modal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-        <span class="close" id="close-stats">&times;</span>
+        <span class="close" id="close-share">&times;</span>
 
-        <h2>STATISTICS</h2>
+        <h2>Share Birdle!</h2>
 
-        <h3><strong>Total</strong>: <span id="total-played"></span></h3>
+        <button id="share-button">Share</button>
 
-        <h3><strong>Wins</strong>: <span id="total-wins"></span></h3>
+        <p id="results-share">xx</p>
 
-        <h3><strong>Win %</strong>: <span id="win-pct"></span></h3>
-
-        <h3>
-          <strong>Current Streak</strong>: <span id="current-streak"></span>
-        </h3>
       </div>
     </div>
 

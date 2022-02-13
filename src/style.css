@@ -34,7 +34,7 @@ header {
 }
 
 #help,
-#stats {
+#share {
   color: rgb(58, 58, 60);
   font-size: 1.5rem;
   cursor: pointer;
