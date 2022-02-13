@@ -2,11 +2,11 @@ import "./style.css";
 import "animate.css";
 import { AllWords, GuessWords } from "./words";
 
-enum GuessType {
-  Absent,
-  Present,
-  Correct,
-}
+// enum GuessType {
+//   Absent,
+//   Present,
+//   Correct,
+// }
 
 // function setAllBlank() {
 //   let newS: GuessType[][] = [[]];
