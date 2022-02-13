@@ -8,26 +8,28 @@ enum GuessType {
   Correct,
 }
 
-function setAllBlank() {
-  let newS: GuessType[][] = [[]];
-  for (let i = 0; i < 6; i++) {
-    newS[i] = [];
-    for (let j = 0; j < 5; j++) {
-      newS[i][j] = GuessType.Absent;
-    }
-  }
-}
+// function setAllBlank() {
+//   let newS: GuessType[][] = [[]];
+//   for (let i = 0; i < 6; i++) {
+//     newS[i] = [];
+//     for (let j = 0; j < 5; j++) {
+//       newS[i][j] = GuessType.Absent;
+//     }
+//   }
+//   return newS;
+// }
 // pick one for today
 var daysSinceEpoch = Math.floor(new Date().getTime() / (24 * 60 * 60 * 1000));
 var todayIndex = daysSinceEpoch % GuessWords.length;
 
 const sn_function = () => {
-  return (state.currentRowIndex * 5 + state.currentLetterIndex)+1;
+  return state.currentRowIndex * 5 + state.currentLetterIndex + 1;
 };
 
+let guessArray: string[] = [];
 let state = {
   boardState: ["", "", "", "", "", ""],
-  letters: setAllBlank(),
+  guesses: guessArray,
   currentRowIndex: 0,
   currentLetterIndex: 0,
   squareNumber: sn_function,
@@ -36,6 +38,7 @@ let state = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log(state);
   createSquares();
   createKeyboard();
   initHelpModal();
@@ -45,14 +48,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function checkNewLetterGuess(letter: string) {
   // if adding letters after the 5th return
   if (state.currentLetterIndex === 5) {
-    return
+    return;
   }
   if (state.currentRowIndex < 6) {
     state.currentGuess[state.currentLetterIndex] = letter;
-    const sq_num = state.squareNumber()
-    const availableSpaceEl = document.getElementById(
-      String(sq_num)
-    )!;
+    const sq_num = state.squareNumber();
+    const availableSpaceEl = document.getElementById(String(sq_num))!;
     availableSpaceEl.textContent = letter;
     if (state.currentLetterIndex < 5) {
       state.currentLetterIndex++;
@@ -99,18 +100,20 @@ function createKeyboard() {
 function checkLetterGuess(letter: string, index: number) {
   // not in word
   if (!state.solution.includes(letter)) {
+    state.guesses.push("absent");
     return "letter-not-present";
   } else {
     // in correct position
     if (letter == state.solution.charAt(index)) {
+      state.guesses.push("correct");
       return "letter-in-position";
     }
   }
+  state.guesses.push("present");
   return "letter-out-of-position";
 }
 
 function handleDeleteLetter() {
-
   // if we are on first tile, do nothing
   if (state.currentLetterIndex === 0) {
     return;
@@ -122,9 +125,7 @@ function handleDeleteLetter() {
   )!;
   lastLetterEl.textContent = "";
 
-  state.currentLetterIndex --;
-
-
+  state.currentLetterIndex--;
 }
 
 function handleSubmitWord() {
@@ -135,14 +136,14 @@ function handleSubmitWord() {
   }
 
   const currentWord = state.currentGuess.join("");
-  console.log(currentWord)
+  console.log(currentWord);
   if (!AllWords.includes(currentWord)) {
     window.alert("Not a bird.");
     return;
   }
 
   // animate the tile reveal
-  const firstLetterId = (state.currentRowIndex) * 5 + 1;
+  const firstLetterId = state.currentRowIndex * 5 + 1;
   const interval = 200;
   state.currentGuess.forEach((letter, index) => {
     setTimeout(() => {
@@ -180,7 +181,6 @@ function handleSubmitWord() {
   }
 }
 
-
 function initHelpModal() {
   const modal = document.getElementById("help-modal")!;
 
@@ -208,19 +208,33 @@ function initHelpModal() {
   });
 }
 
-function updateShareModal() {
-  // put results
-  const resultP = document.getElementById("share-results")!;
-  // share score
-  let shareData = {
-    title: 'Birdle',
-    text: 'This is the string to share!',
-    url: 'https://birdle.pages.dev',
-  }
-  navigator.share(shareData).then(() => {
-    console.log("shared sucessfully");
-    resultP.textContent = 'Share Complete!';
-  })
+function getShare() {
+  console.log(state);
+  const d = new Date();
+  const today = d.getMonth() + "/" + d.getDate();
+  let text = `Birdle! ${today}`;
+  text += "\n";
+  let count = 1;
+  state.guesses.forEach((guess) => {
+    switch (guess) {
+      case "absent":
+        text += `\u{2B1C}`;
+        break;
+      case "present":
+        text += `\u{1F7E8}`;
+        break;
+      case "correct":
+        text += `\u{1F7E9}`;
+        break;
+    }
+    if (count === 5) {
+      text += "\n";
+      count = 1;
+    } else {
+      count++;
+    }
+  });
+  return text;
 }
 
 function initShareModal() {
@@ -236,7 +250,25 @@ function initShareModal() {
   const share_button = document.getElementById("share-button")!;
 
   share_button.addEventListener("click", function () {
-    updateShareModal();
+    // put results
+    const resultP = document.getElementById("share-results")!;
+
+    // share score
+    const shareString = getShare();
+    console.log(shareString);
+    if (navigator.share) {
+      let shareData = {
+        title: "Birdle",
+        text: shareString,
+        url: "https://birdle.pages.dev",
+      };
+      navigator.share(shareData).then(() => {
+        console.log("shared sucessfully");
+        resultP.textContent = "Share Complete!";
+      });
+    } else {
+      resultP.textContent = shareString;
+    }
   });
 
   // When the user clicks on the button, open the modal
