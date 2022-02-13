@@ -47,7 +47,7 @@ function checkNewLetterGuess(letter: string) {
   if (state.currentLetterIndex === 5) {
     return
   }
-  if (state.currentRowIndex < 5) {
+  if (state.currentRowIndex < 6) {
     state.currentGuess[state.currentLetterIndex] = letter;
     const sq_num = state.squareNumber()
     const availableSpaceEl = document.getElementById(
@@ -156,8 +156,9 @@ function handleSubmitWord() {
 
       // set keyboard color too
       const keyboardEl = document.querySelector(`[data-key=${letter}`)!;
-      keyboardEl.className = letterGuess;
-
+      if (keyboardEl.className != "letter-in-position") {
+        keyboardEl.className = letterGuess;
+      }
     }, interval * index);
   });
 
@@ -175,7 +176,7 @@ function handleSubmitWord() {
   state.currentLetterIndex = 0;
 
   if (state.currentRowIndex === 6) {
-    window.alert(`you lose, the word is ${state.solution}`);
+    window.alert(`you lose, reload to try again!`);
   }
 }
 
