@@ -104,7 +104,7 @@ header {
   padding: 0;
   height: 58px;
   cursor: pointer;
-  background-color: rgb(129, 131, 132);
+  /* background-color: rgb(129, 131, 132); */
   color: rgb(215, 218, 220);
   flex-grow: 1;
   text-transform: uppercase;

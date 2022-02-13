@@ -153,6 +153,11 @@ function handleSubmitWord() {
       )! as HTMLElement;
       letterEl.classList.add("animate__flipInX");
       letterEl.classList.add(letterGuess);
+
+      // set keyboard color too
+      const keyboardEl = document.querySelector(`[data-key=${letter}`)!;
+      keyboardEl.className = letterGuess;
+
     }, interval * index);
   });
 
