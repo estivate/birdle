@@ -1,53 +1,62 @@
 import "./style.css";
 import "animate.css";
-import {bird_list} from './birds'
+import { AllWords, GuessWords } from "./words";
 
-// make list of five letter bird words
-let word_list:string[] = [];
-bird_list.forEach(bird => {
-  if (bird.length === 5) {
-    word_list.push(bird);
-    return
-  }
-  if (bird.includes(' ')) {
-    const parts:string[] = bird.split(' ');
-    const last = parts.pop()!;
-    if (last.length === 5) {
-      word_list.push(last)
+enum GuessType {
+  Absent,
+  Present,
+  Correct,
+}
+
+function setAllBlank() {
+  let newS: GuessType[][] = [[]];
+  for (let i = 0; i < 6; i++) {
+    newS[i] = [];
+    for (let j = 0; j < 5; j++) {
+      newS[i][j] = GuessType.Absent;
     }
-    
   }
-});
-word_list = [...new Set(word_list)];
-console.log(word_list);
-
+}
 // pick one for today
 var daysSinceEpoch = Math.floor(new Date().getTime() / (24 * 60 * 60 * 1000));
-var index = daysSinceEpoch % word_list.length;
-console.log(index);
+var todayIndex = daysSinceEpoch % GuessWords.length;
+console.log(todayIndex);
 
-let numberOfGuessedwords = 0;
-let guessedWords: string[][] = [[]];
-let availableSpace = 1;
-let word = word_list[0];
+const sn_function = () => {
+  return (state.currentRowIndex * 5 + state.currentLetterIndex)+1;
+};
+
+let state = {
+  boardState: ["", "", "", "", "", ""],
+  letters: setAllBlank(),
+  currentRowIndex: 0,
+  currentLetterIndex: 0,
+  squareNumber: sn_function,
+  currentGuess: ["", "", "", "", ""],
+  solution: GuessWords[todayIndex],
+};
+console.log(state);
 
 document.addEventListener("DOMContentLoaded", () => {
   createSquares();
   createKeyboard();
 });
 
-function getCurrentWordArray() {
-  return guessedWords[numberOfGuessedwords];
-}
-
-function updateGuessedWords(letter: string) {
-  const currentWordArray = getCurrentWordArray();
-
-  if (currentWordArray && currentWordArray.length < 5) {
-    currentWordArray.push(letter);
-    const availableSpaceEl = document.getElementById(String(availableSpace))!;
-    availableSpace = availableSpace + 1;
+function checkNewLetterGuess(letter: string) {
+  // if adding letters after the 5th return
+  if (state.currentLetterIndex === 5) {
+    return
+  }
+  if (state.currentRowIndex < 5) {
+    state.currentGuess[state.currentLetterIndex] = letter;
+    const sq_num = state.squareNumber()
+    const availableSpaceEl = document.getElementById(
+      String(sq_num)
+    )!;
     availableSpaceEl.textContent = letter;
+    if (state.currentLetterIndex < 5) {
+      state.currentLetterIndex++;
+    }
   }
 }
 
@@ -77,79 +86,90 @@ function createKeyboard() {
         return;
       }
 
-      if (letter ==='del') {
+      if (letter === "del") {
         handleDeleteLetter();
         return;
       }
 
-      updateGuessedWords(letter);
+      checkNewLetterGuess(letter);
     };
   }
 }
 
-
-
-
-function checkLetterGuess(letter:string, index:number) {
-
+function checkLetterGuess(letter: string, index: number) {
   // not in word
-  if (!word.includes(letter)) {
-    return "letter-not-present"
+  if (!state.solution.includes(letter)) {
+    return "letter-not-present";
   } else {
     // in correct position
-    if (letter == word.charAt(index)) {
-      return "letter-in-position"
+    if (letter == state.solution.charAt(index)) {
+      return "letter-in-position";
     }
   }
-  return "letter-out-of-position"
+  return "letter-out-of-position";
 }
 
 function handleDeleteLetter() {
-  const currentWordArray = getCurrentWordArray();
-  currentWordArray.pop()
 
-  guessedWords[guessedWords.length-1] = currentWordArray;
+  // if we are on first tile, do nothing
+  if (state.currentLetterIndex === 0) {
+    return;
+  }
 
-  const lastLetterEl = document.getElementById(String(availableSpace-1))!;
-  lastLetterEl.textContent = '';
-  availableSpace = availableSpace -1;
+  // otherwise clear tile and rewind state
+  const lastLetterEl = document.getElementById(
+    String(state.squareNumber() - 1)
+  )!;
+  lastLetterEl.textContent = "";
+
+  state.currentLetterIndex --;
+
+
 }
 
 function handleSubmitWord() {
-  const currentWordArray = getCurrentWordArray();
-  if (currentWordArray.length !== 5) {
+  //const currentWordArray = getCurrentWordArray();
+  if (state.currentGuess.length !== 5) {
     window.alert("Word must be 5 letters");
     return;
   }
 
-  const currentWord = currentWordArray.join("");
+  const currentWord = state.currentGuess.join("");
 
-  if (!bird_list.includes(currentWord)) {
+  if (!AllWords.includes(currentWord)) {
     window.alert("Not a bird.");
     return;
   }
 
-  const firstLetterId = numberOfGuessedwords * 5 + 1;
+  // animate the tile reveal
+  const firstLetterId = (state.currentRowIndex) * 5 + 1;
   const interval = 200;
-  currentWordArray.forEach((letter, index) => {
+  state.currentGuess.forEach((letter, index) => {
     setTimeout(() => {
       const letterGuess = checkLetterGuess(letter, index);
       const letterId = firstLetterId + index;
-      const letterEl = document.getElementById(letterId.toString())! as HTMLElement;
+      const letterEl = document.getElementById(
+        letterId.toString()
+      )! as HTMLElement;
       letterEl.classList.add("animate__flipInX");
       letterEl.classList.add(letterGuess);
-
     }, interval * index);
-  })
-  
-  if (currentWord === word) {
+  });
+
+  if (currentWord === state.solution) {
     window.alert("Contrats! You won!!");
+
+    // hack to stop playing more words
+    state.currentRowIndex = 7;
   }
 
-  numberOfGuessedwords++;
+  // add this guess to the state
+  state.boardState[state.currentRowIndex] = currentWord;
+  state.currentRowIndex++;
+  state.currentGuess = ["", "", "", "", ""];
+  state.currentLetterIndex = 0;
 
-  if (guessedWords.length === 6) {
-    window.alert(`you lose, the word is ${word}`);
+  if (state.currentRowIndex === 6) {
+    window.alert(`you lose, the word is ${state.solution}`);
   }
-  guessedWords.push([]);
 }
