@@ -1,15 +1,185 @@
-<svg width="410" height="404" viewBox="0 0 410 404" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M399.641 59.5246L215.643 388.545C211.844 395.338 202.084 395.378 198.228 388.618L10.5817 59.5563C6.38087 52.1896 12.6802 43.2665 21.0281 44.7586L205.223 77.6824C206.398 77.8924 207.601 77.8904 208.776 77.6763L389.119 44.8058C397.439 43.2894 403.768 52.1434 399.641 59.5246Z" fill="url(#paint0_linear)"/>
-<path d="M292.965 1.5744L156.801 28.2552C154.563 28.6937 152.906 30.5903 152.771 32.8664L144.395 174.33C144.198 177.662 147.258 180.248 150.51 179.498L188.42 170.749C191.967 169.931 195.172 173.055 194.443 176.622L183.18 231.775C182.422 235.487 185.907 238.661 189.532 237.56L212.947 230.446C216.577 229.344 220.065 232.527 219.297 236.242L201.398 322.875C200.278 328.294 207.486 331.249 210.492 326.603L212.5 323.5L323.454 102.072C325.312 98.3645 322.108 94.137 318.036 94.9228L279.014 102.454C275.347 103.161 272.227 99.746 273.262 96.1583L298.731 7.86689C299.767 4.27314 296.636 0.855181 292.965 1.5744Z" fill="url(#paint1_linear)"/>
-<defs>
-<linearGradient id="paint0_linear" x1="6.00017" y1="32.9999" x2="235" y2="344" gradientUnits="userSpaceOnUse">
-<stop stop-color="#41D1FF"/>
-<stop offset="1" stop-color="#BD34FE"/>
-</linearGradient>
-<linearGradient id="paint1_linear" x1="194.651" y1="8.81818" x2="236.076" y2="292.989" gradientUnits="userSpaceOnUse">
-<stop stop-color="#FFEA83"/>
-<stop offset="0.0833333" stop-color="#FFDD35"/>
-<stop offset="1" stop-color="#FFA800"/>
-</linearGradient>
-</defs>
-</svg>
+<?xml version="1.0"?>
+<svg
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:cc="http://creativecommons.org/ns#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:svg="http://www.w3.org/2000/svg"
+    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    xmlns:ns1="http://sozi.baierouge.fr"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    id="svg3163"
+    viewBox="0 0 100.63 112.31"
+    version="1.1"
+  >
+  <g
+      id="layer1"
+      stroke-linejoin="round"
+      fill-rule="evenodd"
+      transform="translate(-210.45 -504.83)"
+      stroke="#000"
+      stroke-linecap="square"
+    >
+    <path
+        id="path4363-1-21"
+        d="m509.32 458.79c-112.67 4.96-160.3-69.76-108.26-169.81 52.05-100.06 140.57-103.95 201.2-8.85 60.62 95.1 19.73 173.71-92.94 178.66z"
+        stroke-width="7.031"
+        fill="#bb2f98"
+        transform="matrix(-.11499 -.041510 -.052743 .15688 371.9 532.77)"
+    />
+    <path
+        id="path4363-0"
+        d="m509.32 458.79c-112.67 4.96-160.3-69.76-108.26-169.81 52.05-100.06 140.57-103.95 201.2-8.85 60.62 95.1 19.73 173.71-92.94 178.66z"
+        stroke-width="6.8274"
+        fill="#bb2f98"
+        transform="matrix(-.10415 .033874 .074286 .18182 252.91 490.74)"
+    />
+    <path
+        id="path4383-0"
+        d="m556.55 466.45c-17.621-0.20253-4.8044-87.421-13.439-102.78-8.6349-15.361-89.808-49.746-80.822-64.905 8.9857-15.159 78.111 39.55 95.732 39.752 17.621 0.20254 87.985-52.903 96.62-37.542 8.6349 15.361-73.307 47.871-82.293 63.03-8.9857 15.159 1.8224 102.65-15.798 102.45z"
+        stroke-width="7.7571"
+        fill="#e5b302"
+        transform="matrix(.17190 -.0047636 -.0031456 -.096593 167.19 647.47)"
+    />
+    <path
+        id="path4383-1-7"
+        d="m556.55 466.45c-17.621-0.20253-4.8044-87.421-13.439-102.78-8.6349-15.361-89.808-49.746-80.822-64.905 8.9857-15.159 78.111 39.55 95.732 39.752 17.621 0.20254 87.985-52.903 96.62-37.542 8.6349 15.361-73.307 47.871-82.293 63.03-8.9857 15.159 1.8224 102.65-15.798 102.45z"
+        stroke-width="7.7571"
+        fill="#e5b302"
+        transform="matrix(.17190 -.0047636 -.0031456 -.096593 177.1 646.74)"
+    />
+    <path
+        id="path4341-9"
+        d="m412.31 599.21c-116.74 7.07-213.49-139.27-161.24-243.9 52.24-104.64 227.34-115.25 291.84-17.69s-13.87 254.51-130.6 261.59z"
+        stroke-width="3.8166"
+        fill="#d77eb4"
+        transform="matrix(.26034 -.0072146 -.0085796 -.26345 160.79 675.08)"
+    />
+    <path
+        id="path3799-6"
+        stroke-width="4.1718"
+        transform="matrix(.25580 -.0072865 .0070938 .22441 283.58 423.02)"
+        fill="#fff"
+        d="m-272.67 524.66c-29.735-39.334-22.633-95.85 15.865-126.23 38.497-30.382 93.811-23.125 123.55 16.21 29.735 39.334 22.633 95.85-15.865 126.23-38.226 30.168-93.101 23.252-123.01-15.503"
+    />
+    <path
+        id="path4309-6"
+        stroke-width="4.1569"
+        transform="matrix(.25035 -.0069378 .0075209 .23094 191.83 415.38)"
+        d="m157.28 527.59c-10.774-14.506-8.2002-35.349 5.7481-46.554s33.989-8.5282 44.763 5.978 8.2002 35.349-5.7481 46.554c-13.85 11.126-33.732 8.5752-44.568-5.7173"
+    />
+    <path
+        id="path3799-5-2"
+        stroke-width="4.0007"
+        transform="matrix(-.26375 .0074224 .0075846 .23668 228.67 416.99)"
+        fill="#fff"
+        d="m-272.67 524.66c-29.735-39.334-22.633-95.85 15.865-126.23 38.497-30.382 93.811-23.125 123.55 16.21 29.735 39.334 22.633 95.85-15.865 126.23-38.226 30.168-93.101 23.252-123.01-15.503"
+    />
+    <path
+        id="path4309-7-9"
+        stroke-width="4.1569"
+        transform="matrix(-.25035 .0069378 .0075209 .23094 321.81 410.2)"
+        d="m157.28 527.59c-10.774-14.506-8.2002-35.349 5.7481-46.554s33.989-8.5282 44.763 5.978 8.2002 35.349-5.7481 46.554c-13.85 11.126-33.732 8.5752-44.568-5.7173"
+    />
+    <path
+        id="path4339-4"
+        d="m-49.783 512.41c-30.644 119.17-66.048 129.04-153.93 42.918-87.882-86.123-78.729-121.72 39.797-154.77 118.53-33.047 144.78-7.3216 114.13 111.85z"
+        stroke-width="11.345"
+        fill="#ffc600"
+        transform="matrix(.096050 .015916 -.020275 .077536 285.54 517.64)"
+    />
+  </g
+  >
+  <metadata
+    >
+    <rdf:RDF
+      >
+      <cc:Work
+        >
+        <dc:format
+          >image/svg+xml</dc:format
+        >
+        <dc:type
+            rdf:resource="http://purl.org/dc/dcmitype/StillImage"
+        />
+        <cc:license
+            rdf:resource="http://creativecommons.org/licenses/publicdomain/"
+        />
+        <dc:publisher
+          >
+          <cc:Agent
+              rdf:about="http://openclipart.org/"
+            >
+            <dc:title
+              >Openclipart</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:publisher
+        >
+        <dc:title
+          >Pink googley-eye bird</dc:title
+        >
+        <dc:date
+          >2013-09-11T18:40:01</dc:date
+        >
+        <dc:description
+          >A funny-looking pink cartoon bird with big eyes.</dc:description
+        >
+        <dc:source
+          >https://openclipart.org/detail/183310/pink-googley-eye-bird-by-anarres-183310</dc:source
+        >
+        <dc:creator
+          >
+          <cc:Agent
+            >
+            <dc:title
+              >anarres</dc:title
+            >
+          </cc:Agent
+          >
+        </dc:creator
+        >
+        <dc:subject
+          >
+          <rdf:Bag
+            >
+            <rdf:li
+              >bird</rdf:li
+            >
+            <rdf:li
+              >cartoon</rdf:li
+            >
+            <rdf:li
+              >comic</rdf:li
+            >
+            <rdf:li
+              >cute</rdf:li
+            >
+          </rdf:Bag
+          >
+        </dc:subject
+        >
+      </cc:Work
+      >
+      <cc:License
+          rdf:about="http://creativecommons.org/licenses/publicdomain/"
+        >
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Reproduction"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#Distribution"
+        />
+        <cc:permits
+            rdf:resource="http://creativecommons.org/ns#DerivativeWorks"
+        />
+      </cc:License
+      >
+    </rdf:RDF
+    >
+  </metadata
+  >
+</svg
+>

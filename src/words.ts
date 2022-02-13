@@ -18,14 +18,15 @@ const filterToFit = ((word_list:string[]):string[]=> {
         if (word.includes(' ')) {
             const parts:string[] = word.split(' ');
             const last = parts.pop()!;
-            if (last.length === 5) {
-              word_list.push(last)
+            if (last.length === wordSize) {
+              newList.push(last)
             }
           }
     })
 
     // dedupe the final list via Array -> Set -> Array
     newList = [...new Set(newList)];
+    //console.log(newList);
     return newList;
 
 })
