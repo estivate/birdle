@@ -2,22 +2,6 @@ import "./style.css";
 import "animate.css";
 import { AllWords, GuessWords } from "./words";
 
-// enum GuessType {
-//   Absent,
-//   Present,
-//   Correct,
-// }
-
-// function setAllBlank() {
-//   let newS: GuessType[][] = [[]];
-//   for (let i = 0; i < 6; i++) {
-//     newS[i] = [];
-//     for (let j = 0; j < 5; j++) {
-//       newS[i][j] = GuessType.Absent;
-//     }
-//   }
-//   return newS;
-// }
 // pick one for today
 var daysSinceEpoch = Math.floor(new Date().getTime() / (24 * 60 * 60 * 1000));
 var todayIndex = daysSinceEpoch % GuessWords.length;
@@ -38,7 +22,7 @@ let state = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log(state);
+  console.log(new Date().getDate());
   createSquares();
   createKeyboard();
   initHelpModal();
@@ -182,6 +166,7 @@ function handleSubmitWord() {
 }
 
 function initHelpModal() {
+
   const modal = document.getElementById("help-modal")!;
 
   // Get the button that opens the modal

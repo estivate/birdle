@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="apple-touch-icon" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script
       src="https://use.fontawesome.com/releases/v6.0.0/js/all.js"
@@ -71,21 +71,19 @@
         <span class="close" id="close-help">&times;</span>
 
         <p>Guess the BIRDLE in 6 tries. Each guess must be a valid name 
-          for a bird. Hit the enter button to submit. After each guess, 
-          the color of the tiles will change to show how
-          close your guess was to the word.
+          for a bird. Hit the enter button to submit.
         </p>
 
         <img src="examples.png" id="examples" />
 
         <p>
-          The gray letters are not in the word in any spot. The gold letters
-          like "H" and "Y" are in the word but in the wrong spot. The green
-          letters like "M" and "N" are in the word and in the correct spot.
+         Gray letters are not in the word in any spot. Gold letters
+          are in the word, but in the wrong spot. Green
+          letters are in the word and in the correct spot.
         </p>
 
         <hr />
-        <p>A new BIRDLE will be available each day!</p>
+        <p id="every-day-tag">A new BIRDLE will be available each day!</p>
         <p id="dedication"><i class="fa-solid fa-heart"></i> Ka</p>
       </div>
     </div>
@@ -107,7 +105,7 @@
 
       </div>
     </div>
-
+    <div id="word-list">asdf</div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

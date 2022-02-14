@@ -69,9 +69,9 @@ header {
 
 .square {
   border: 2px solid #d3d6da;
-  min-width: 55px;
-  min-height: 55px;
-  font-size: 48px;
+  min-width: 45px;
+  min-height: 45px;
+  font-size: 32px;
   font-weight: bold;
   color: #000;
   text-transform: uppercase;
@@ -164,12 +164,13 @@ header {
 }
 
 .modal-content p {
-  margin: 25px 0;
+  font-size:12px;
+  margin: 12px 0;
 }
 
 .modal-content img {
   display: block;
-  margin: 20px auto;
+  margin: 12px auto;
 }
 
 .modal-content hr {
@@ -214,6 +215,12 @@ header {
 
 .hidden {
   display: none;
+}
+
+#every-day-tag {
+  display:block;
+  margin:12px auto;
+  text-align:center;
 }
 
 #dedication {
