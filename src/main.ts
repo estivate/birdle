@@ -22,7 +22,7 @@ let state = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  console.log(new Date().getDate());
+  //console.log(new Date().getDate());
   createSquares();
   createKeyboard();
   initHelpModal();

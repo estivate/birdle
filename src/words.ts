@@ -26,7 +26,7 @@ const filterToFit = ((word_list:string[]):string[]=> {
 
     // dedupe the final list via Array -> Set -> Array
     newList = [...new Set(newList)];
-    console.log(newList);
+    //console.log(newList);
     return newList;
 
 })
